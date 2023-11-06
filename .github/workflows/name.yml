@@ -28,4 +28,6 @@ jobs:
       - name: testing unit
         run: npm run test:unit
       - name: storybook building
-        run: npm run storybook
+        run: npm run storybook:build
+      - name: testing ui
+        run: npm run test:ui:ci
