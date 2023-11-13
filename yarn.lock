@@ -9759,7 +9759,7 @@ lodash@4, lodash@4.17.21, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lod
 
 loki@^0.28.1:
   version "0.28.1"
-  resolved "https://registry.npmjs.org/loki/-/loki-0.28.1.tgz"
+  resolved "https://registry.yarnpkg.com/loki/-/loki-0.28.1.tgz#8efdbafaab3f5bc9546e4f07d08081069463a12a"
   integrity sha512-SUFAkDKk4s3WgOloKAerDDQL/XgmOAFT83s373KeC0DGORmZc4pF5TXcBhtWGRAki+qmlrP8lBGVlDbIjXQpVA==
   dependencies:
     "@loki/integration-react" "^0.28.0"
