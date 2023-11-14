@@ -43,7 +43,7 @@ server.post('/login', (req, res) => {
 // eslint-disable-next-line
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
+        return res.status(401).json({ message: 'AUTH ERROR' });
     }
 
     next();
