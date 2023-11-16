@@ -6,6 +6,7 @@ import { Sidebar } from 'widgets/Sidebar';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
+import { Loader } from 'shared/ui/Loader/Loader';
 
 function App() {
     const { theme } = useTheme();
@@ -17,7 +18,7 @@ function App() {
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback="">
+            <Suspense fallback={<Loader />}>
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
