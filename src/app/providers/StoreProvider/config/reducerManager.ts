@@ -1,12 +1,11 @@
 import {
-    AnyAction, CombinedState,
+    AnyAction,
     combineReducers,
     Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import {
     ReducerManager,
-    ReduxStoreWithManager,
     StateSchema,
     StateSchemaKey,
 } from './StateSchema';

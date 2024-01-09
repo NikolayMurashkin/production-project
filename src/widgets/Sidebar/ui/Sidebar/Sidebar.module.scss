@@ -25,27 +25,6 @@
     flex-direction: column;
 }
 
-.item {
-    display: flex;
-    align-items: center;
-
-    &:not(:last-child) {
-        margin-bottom: 10px;
-    }
-}
-
-.link {
-    margin-left: 10px;
-    width: 100%;
-    white-space: nowrap;
-}
-
-.icon {
-    fill: var(--inverted-primary-color);
-    min-width: 20px;
-    height: 20px;
-}
-
 .collapsed {
     width: var(--sidebar-width-collapsed);
 
@@ -56,14 +35,6 @@
 
     .lang {
         margin-left: 0;
-    }
-
-    .link {
-        width: 0;
-        opacity: 0;
-        transition: opacity 0.2s;
-        margin-left: 0;
-        height: 0;
     }
 }
 

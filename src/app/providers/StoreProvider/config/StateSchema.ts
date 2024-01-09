@@ -7,10 +7,12 @@ import {
     EnhancedStore, Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
+import { ProfileSchema } from 'entities/Profile';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
+    profile: ProfileSchema;
 
     // Async reducers
     loginForm?: LoginSchema;

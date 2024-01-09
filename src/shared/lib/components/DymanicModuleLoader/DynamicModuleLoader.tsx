@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { FC, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
@@ -23,7 +22,6 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         removeAfterUnmount = false,
     } = props;
 
-    const { t } = useTranslation();
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useDispatch();
 

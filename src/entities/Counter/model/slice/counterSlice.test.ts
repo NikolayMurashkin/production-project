@@ -1,7 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { CounterSchema } from 'entities/Counter';
-import { counterReducer, counterActions } from './counterSlice';
+import { counterActions, counterReducer } from './counterSlice';
 
 describe('counterSlice.test', () => {
     test('should increment', () => {
@@ -10,7 +8,8 @@ describe('counterSlice.test', () => {
         };
 
         const increment = counterActions.increment();
-        expect(counterReducer(state, increment)).toEqual({ value: 11 });
+        expect(counterReducer(state, increment))
+            .toEqual({ value: 11 });
     });
 
     test('should decrement', () => {
@@ -19,10 +18,12 @@ describe('counterSlice.test', () => {
         };
 
         const decrement = counterActions.decrement();
-        expect(counterReducer(state, decrement)).toEqual({ value: 9 });
+        expect(counterReducer(state, decrement))
+            .toEqual({ value: 9 });
     });
 
     test('should work with empty state', () => {
-        expect(counterReducer(undefined, counterActions.increment)).toEqual({ value: 1 });
+        expect(counterReducer(undefined, counterActions.increment))
+            .toEqual({ value: 1 });
     });
 });
