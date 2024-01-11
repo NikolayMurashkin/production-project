@@ -28,14 +28,14 @@ export const Button = memo((props: ButtonProps) => {
     const {
         className,
         children,
-        theme,
+        theme = ButtonTheme.OUTLINE,
         square,
-        size,
+        size = ButtonSize.M,
         disabled,
         ...otherProps
     } = props;
 
-    const mods:Record<string, boolean> = {
+    const mods:Record<string, boolean | undefined> = {
         [cls.square]: square,
         [cls.disabled]: disabled,
     };
