@@ -5,7 +5,7 @@ import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import cn from 'classnames';
-import cls from './Navbar.module.scss';
+import styles from './Navbar.module.scss';
 
 interface NavbarProps {
     className?: string;
@@ -32,10 +32,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const authData = useSelector(getUserAuthData);
     if (authData) {
         return (
-            <div className={cn(cls.Navbar, className)}>
+            <div className={cn(styles.Navbar, className)}>
                 <Button
                     theme={ButtonTheme.CLEAR_INVERTED}
-                    className={cls.links}
+                    className={styles.links}
                     onClick={onLogout}
                 >
                     {t('Выйти')}
@@ -44,10 +44,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         );
     }
     return (
-        <div className={cn(cls.Navbar, className)}>
+        <div className={cn(styles.Navbar, className)}>
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
-                className={cls.links}
+                className={styles.links}
                 onClick={onShowModal}
             >
                 {t('Войти')}

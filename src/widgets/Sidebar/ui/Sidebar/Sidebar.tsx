@@ -1,11 +1,10 @@
 import { memo, useState } from 'react';
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
-import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import cn from 'classnames';
+import { LangSwitcher, ThemeSwitcher } from 'shared/ui';
 import { SidebarItemsList } from '../../model/Items';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import cls from './Sidebar.module.scss';
+import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
     className?: string;
@@ -21,19 +20,19 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     return (
         <div
             data-testid="sidebar"
-            className={cn(cls.Sidebar, className, { [cls.collapsed]: collapsed })}
+            className={cn(styles.Sidebar, className, { [styles.collapsed]: collapsed })}
         >
             <Button
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
-                className={cls.collapseButton}
+                className={styles.collapseButton}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 square
                 size={ButtonSize.L}
             >
                 {collapsed ? '>' : '<'}
             </Button>
-            <div className={cls.items}>
+            <div className={styles.items}>
                 {SidebarItemsList.map((item) => (
                     <SidebarItem
                         key={item.path}
@@ -42,9 +41,9 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     />
                 ))}
             </div>
-            <div className={cls.switchers}>
+            <div className={styles.switchers}>
                 <ThemeSwitcher />
-                <LangSwitcher short={collapsed} className={cls.lang} />
+                <LangSwitcher short={collapsed} className={styles.lang} />
             </div>
         </div>
     );

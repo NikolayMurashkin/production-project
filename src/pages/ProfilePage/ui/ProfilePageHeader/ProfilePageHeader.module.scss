@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.editBtn {
+    margin-left: auto;
+}
+
+.buttons {
+    display: flex;
+
+    button {
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}

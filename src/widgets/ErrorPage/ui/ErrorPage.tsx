@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
 import { memo } from 'react';
 import cn from 'classnames';
-import cls from './ErrorPage.module.scss';
+import styles from './ErrorPage.module.scss';
 
 interface ErrorPageProps {
     className?: string;
@@ -17,7 +17,7 @@ export const ErrorPage = memo(({ className }: ErrorPageProps) => {
     };
 
     return (
-        <div className={cn(cls.ErrorPage, className)}>
+        <div className={cn(styles.ErrorPage, className)}>
             <p>{t('Произошла непредвиденная ошибка')}</p>
             <Button onClick={reloadPage}>
                 {t('Обновить страницу')}

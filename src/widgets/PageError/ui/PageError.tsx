@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
-import cls from './PageError.module.scss';
+import styles from './PageError.module.scss';
 
 interface PageErrorProps {
     className?: string
@@ -16,7 +16,7 @@ export const PageError = memo(({ className }: PageErrorProps) => {
         location.reload();
     };
     return (
-        <div className={cn(cls.PageError, className)}>
+        <div className={cn(styles.PageError, className)}>
             <p>{t('Произошла непредвиденная ошибка')}</p>
             <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
         </div>

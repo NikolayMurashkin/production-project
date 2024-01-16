@@ -9,7 +9,7 @@ import React, {
 import { Portal } from 'shared/ui/Portal/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';
 import cn from 'classnames';
-import cls from './Modal.module.scss';
+import styles from './Modal.module.scss';
 
 interface ModalProps {
     className?: string;
@@ -73,8 +73,8 @@ export const Modal = (props: ModalProps) => {
     }, [isOpen, onKeyDown]);
 
     const mods: Record<string, boolean | undefined> = {
-        [cls.opened]: isOpen,
-        [cls.isClosing]: isClosing,
+        [styles.opened]: isOpen,
+        [styles.isClosing]: isClosing,
     };
 
     if (lazy && !isMounted) {
@@ -83,10 +83,10 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div className={cn(cls.Modal, mods, className, theme, 'app_modal')}>
-                <div className={cls.overlay} onClick={closeHandler}>
+            <div className={cn(styles.Modal, mods, className, theme, 'app_modal')}>
+                <div className={styles.overlay} onClick={closeHandler}>
                     <div
-                        className={cls.content}
+                        className={styles.content}
                         onClick={onContentClick}
                     >
                         {children}

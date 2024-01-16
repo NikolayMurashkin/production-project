@@ -13,6 +13,7 @@
     width: 100%;
     color: transparent;
     text-shadow: 0 0 0 var(--primary-color);
+    cursor: inherit;
 
     &:focus {
         outline: none;
@@ -32,6 +33,11 @@
     left: 0;
     position: absolute;
     animation: blink 0.7s forwards infinite;
+}
+
+.readonly {
+    opacity: 0.5;
+    cursor: default;
 }
 
 @keyframes blink {

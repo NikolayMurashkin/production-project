@@ -1,6 +1,16 @@
 {
-	"Профиль": "Profile",
-	"Редактировать": "Edit",
-	"Ваше имя": "Your firstname",
-	"Ваша фамилия": "Your lastname"
+  "Профиль": "Profile",
+  "Редактировать": "Edit",
+  "Сохранить": "Save",
+  "Отмена": "Cancel",
+  "Имя": "Firstname",
+  "Фамилия": "Lastname",
+  "Возраст": "Age",
+  "Валюта": "Currency",
+  "Страна": "Country",
+  "Город": "City",
+  "Логин": "Username",
+  "Аватар": "Avatar",
+  "Произошла ошибка при загрузке пользователя": "En error occured while profile loading",
+  "Попробуйте обновить страницу": "Try to reload page"
 }

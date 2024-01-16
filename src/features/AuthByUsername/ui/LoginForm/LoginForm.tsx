@@ -24,7 +24,7 @@ import {
     getLoginIsLoading,
 } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
-import cls from './LoginForm.module.scss';
+import styles from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
@@ -69,7 +69,7 @@ const LoginForm = memo(({
             reducers={initialReducers}
             removeAfterUnmount
         >
-            <div className={cn(cls.LoginForm, className)}>
+            <div className={cn(styles.LoginForm, className)}>
                 <Text title={t('Форма авторизации')} />
                 {error && (
                     <Text
@@ -80,20 +80,20 @@ const LoginForm = memo(({
                 <Input
                     autofocus
                     type="text"
-                    className={cls.input}
+                    className={styles.input}
                     placeholder={t('Введите логин')}
                     onChange={onChangeUsername}
                     value={username}
                 />
                 <Input
                     type="text"
-                    className={cls.input}
+                    className={styles.input}
                     placeholder={t('Введите пароль')}
                     onChange={onChangePassword}
                     value={password}
                 />
                 <Button
-                    className={cls.loginBtn}
+                    className={styles.loginBtn}
                     theme={ButtonTheme.OUTLINE}
                     onClick={onLogin}
                     disabled={isLoading}
