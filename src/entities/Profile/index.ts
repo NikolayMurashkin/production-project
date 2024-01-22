@@ -32,3 +32,6 @@ export {
 export {
     getProfileReadonly,
 } from './model/selectors/getProfileReadonly/getProfileReadonly';
+export {
+    getProfileValidateErrors,
+} from './model/selectors/getProfileValidateErrors/getProfileValidateErrors';

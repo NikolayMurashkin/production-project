@@ -12,5 +12,13 @@
   "Логин": "Username",
   "Аватар": "Avatar",
   "Произошла ошибка при загрузке пользователя": "En error occured while profile loading",
-  "Попробуйте обновить страницу": "Try to reload page"
+  "Попробуйте обновить страницу": "Try to reload page",
+  "Некорректный возраст": "Incorrect age",
+  "Некорректный город": "Incorrect city",
+  "Некорректная страна": "Incorrect country",
+  "Некорректная валюта": "Incorrect currency",
+  "Имя и фамилия обязательны": "Firstname and last name are required",
+  "Данные отсутствуют": "Empty data",
+  "Серверная ошибка при сохранении": "Server error while saving"
+
 }

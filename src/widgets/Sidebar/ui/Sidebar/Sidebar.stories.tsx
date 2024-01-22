@@ -33,3 +33,9 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
         authData: {},
     },
 })];
+
+export const NoAuth = Template.bind({});
+NoAuth.args = {};
+NoAuth.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    user: {},
+})];
