@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect 
 
 export const Primary = Template.bind({});
 Primary.args = {
-    value: Countries.NewZeeland,
+    value: Countries.Armenia,
     // eslint-disable-next-line no-alert
     onChange: (value: string) => { alert(value); },
     readonly: false,

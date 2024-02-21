@@ -1,11 +1,20 @@
+import { ArticleDetails } from 'entities/Article';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import styles from './ArticleDetailsPage.module.scss';
+import { useParams } from 'react-router-dom';
 
 const ArticleDetailsPage = () => {
     const { t } = useTranslation('articles');
+    const { id } = useParams<{id: string}>();
+
+    if (!id) {
+        return <div>{t('Статья не найдена')}</div>;
+    }
+
     return (
-        <div className={styles.articles}>{t('ArticleDetailsPage')}</div>
+        <div>
+            <ArticleDetails id={id} />
+        </div>
     );
 };
 

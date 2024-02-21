@@ -10,3 +10,4 @@ export { Portal } from './Portal/Portal';
 export { Text } from './Text/Text';
 export { ThemeSwitcher } from './ThemeSwitcher/ui/ThemeSwitcher';
 export { Select } from './Select/Select';
+export { Skeleton } from './Skeleton/Skeleton';

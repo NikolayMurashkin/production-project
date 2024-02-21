@@ -7,7 +7,7 @@ import { profileActions, profileReducer } from './profileSlice';
 const form = {
     username: 'Narkomanos',
     age: 23,
-    country: Countries.NewZeeland,
+    country: Countries.Armenia,
     city: 'Oakland',
     currency: Currencies.EUR,
     lastname: 'Murashkin',
