@@ -93,7 +93,7 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
@@ -107,7 +107,8 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://pic.rutubelist.ru/video/ce/da/ceda7d0b03d4081e62cc71b6a6cc45e5.jpg"
     },
     {
       "id": "2",
@@ -124,6 +125,6 @@
     "country": "Belarus",
     "city": "Moscow",
     "username": "admin213",
-    "avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj"
+    "avatar": "https://pic.rutubelist.ru/video/ce/da/ceda7d0b03d4081e62cc71b6a6cc45e5.jpg"
   }
 }
