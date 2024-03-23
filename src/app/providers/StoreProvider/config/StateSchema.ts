@@ -3,7 +3,6 @@ import { AxiosInstance } from 'axios';
 import {
     AnyAction,
     CombinedState,
-    Dispatch,
     EnhancedStore, Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
@@ -12,6 +11,7 @@ import { UserSchema } from 'entities/User';
 import { ProfileSchema } from 'entities/Profile';
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { AddCommentFormSchema } from 'features/AddCommentForm';
 
 export interface StateSchema {
     user: UserSchema;
@@ -21,6 +21,7 @@ export interface StateSchema {
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
     articleDetailsComments?: ArticleDetailsCommentsSchema;
+    addCommentForm?: AddCommentFormSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
@@ -44,6 +45,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ThunkExtraArg;
-    dispatch: Dispatch;
     state: StateSchema;
 }

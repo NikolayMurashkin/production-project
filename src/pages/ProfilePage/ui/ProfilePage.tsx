@@ -19,6 +19,7 @@ import { TextTheme, Text } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -31,6 +32,7 @@ interface ProfilePageProps {
 
 const ProfilePage = memo(({ className }: ProfilePageProps) => {
     const { t } = useTranslation('profile');
+    const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
@@ -51,29 +53,40 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ first: value || '' }));
     }, [dispatch]);
+
     const onChangeLastname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ lastname: value || '' }));
     }, [dispatch]);
+
     const onChangeAge = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ age: Number(value) || 0 }));
     }, [dispatch]);
+
     const onChangeCurrency = useCallback((currency?: Currencies) => {
         dispatch(profileActions.updateProfile({ currency }));
     }, [dispatch]);
+
     const onChangeCountry = useCallback((country?: Countries) => {
         dispatch(profileActions.updateProfile({ country }));
     }, [dispatch]);
+
     const onChangeCity = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ city: value || '' }));
     }, [dispatch]);
+
     const onChangeUsername = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ username: value || '' }));
     }, [dispatch]);
+
     const onChangeAvatar = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ avatar: value || '' }));
     }, [dispatch]);
 
-    useInitialEffect(() => dispatch(fetchProfileData()));
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
+        }
+    });
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

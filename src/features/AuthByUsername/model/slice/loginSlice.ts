@@ -37,7 +37,8 @@ export const loginSlice = createSlice({
                 state.username = action.payload.username;
             })
             .addCase(loginByUsername.rejected, (state, action) => {
-                state.error = action.payload; state.isLoading = false;
+                state.error = action.payload;
+                state.isLoading = false;
             });
     },
 });
