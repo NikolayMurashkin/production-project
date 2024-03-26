@@ -4,10 +4,13 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { Button } from 'shared/ui';
+import { ButtonTheme } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/Text';
 import { getArticleCommentsIsLoading } from '../model/selectros/comments/comments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
@@ -22,6 +25,8 @@ const reducers: ReducersList = {
 const ArticleDetailsPage = () => {
     const { t } = useTranslation('articles');
     const { id } = useParams<{id: string}>();
+    const navigate = useNavigate();
+
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
@@ -32,6 +37,10 @@ const ArticleDetailsPage = () => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
 
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
+
     if (!id) {
         return <div>{t('Статья не найдена')}</div>;
     }
@@ -39,6 +48,9 @@ const ArticleDetailsPage = () => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={styles.ArticleDetailsPage}>
+                <Button onClick={onBackToList} theme={ButtonTheme.OUTLINE}>
+                    {t('Назад к списку')}
+                </Button>
                 <ArticleDetails id={id} />
                 <Text
                     title={t('Комментарии')}

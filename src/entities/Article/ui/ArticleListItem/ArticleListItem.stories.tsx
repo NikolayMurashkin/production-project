@@ -1,15 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article, ArticleBlockType, ArticleType } from '../../model/types/article';
-import { ArticleDetails } from './ArticleDetails';
+import { Article, ArticleBlockType, ArticleType, ArticleView } from 'entities/Article/model/types/article';
+import { ArticleListItem } from './ArticleListItem';
 
 export default {
-    title: 'entities/ArticleDetails',
-    component: ArticleDetails,
+    title: 'entities/Article/ArticleListItem',
+    component: ArticleListItem,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleDetails>;
+} as ComponentMeta<typeof ArticleListItem>;
 
 const article: Article = {
     id: '1',
@@ -85,28 +84,33 @@ const article: Article = {
     ],
 };
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
-Primary.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-})];
+export const LoadingSmall = Template.bind({});
+LoadingSmall.args = {
+    isLoading: true,
+    article,
+    view: ArticleView.SMALL,
+};
 
-export const Error = Template.bind({});
-Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'error',
-    },
-})];
+export const LoadingBig = Template.bind({});
+LoadingBig.args = {
+    isLoading: true,
+    article,
+    view: ArticleView.BIG,
+};
+
+export const NormalSmall = Template.bind({});
+NormalSmall.args = {
+    isLoading: false,
+    article,
+    view: ArticleView.SMALL,
+};
+
+export const NormalBig = Template.bind({});
+NormalBig.args = {
+    isLoading: false,
+    article,
+    view: ArticleView.BIG,
+};

@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article, ArticleBlockType, ArticleType } from '../../model/types/article';
-import { ArticleDetails } from './ArticleDetails';
+import { Article, ArticleBlockType, ArticleType, ArticleView } from '../../model/types/article';
+import { ArticleList } from './ArticleList';
 
 export default {
-    title: 'entities/ArticleDetails',
-    component: ArticleDetails,
+    title: 'entities/Article/ArticleList',
+    component: ArticleList,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleDetails>;
+
+} as ComponentMeta<typeof ArticleList>;
 
 const article: Article = {
     id: '1',
@@ -85,28 +85,59 @@ const article: Article = {
     ],
 };
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+export const LoadingSmall = Template.bind({});
+LoadingSmall.args = {
+    isLoading: true,
+    articles: new Array(9)
+        .fill(0)
+        .map((_, index) => (
+          { 
+            ...article,
+           id: String(index)
+        }
+        )),
+    view: ArticleView.SMALL,
+};
 
-export const Primary = Template.bind({});
-Primary.args = {};
-Primary.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+export const LoadingBig = Template.bind({});
+LoadingBig.args = {
+    isLoading: true,
+    articles: new Array(3)
+        .fill(0)
+        .map((_, index) => (
+          { 
+            ...article,
+           id: String(index)
+        }
+        )),
+    view: ArticleView.BIG,
+};
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-})];
+export const NormalSmall = Template.bind({});
+NormalSmall.args = {
+    isLoading: false,
+    articles: new Array(9)
+        .fill(0)
+        .map((_, index) => (
+          { 
+            ...article,
+           id: String(index)
+        }
+        )),
+    view: ArticleView.SMALL,
+};
 
-export const Error = Template.bind({});
-Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'error',
-    },
-})];
+export const NormalBig = Template.bind({});
+NormalBig.args = {
+    isLoading: false,
+    articles: new Array(3)
+        .fill(0)
+        .map((_, index) => (
+          { 
+            ...article,
+           id: String(index)
+        }
+        )),
+    view: ArticleView.BIG,
+};
