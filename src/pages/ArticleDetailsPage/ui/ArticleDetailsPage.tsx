@@ -6,7 +6,10 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Button } from 'shared/ui';
@@ -15,7 +18,10 @@ import { Text } from 'shared/ui/Text/Text';
 import { getArticleCommentsIsLoading } from '../model/selectros/comments/comments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
-import { articleDetailsCommentsReducer, getArticleComments } from '../model/slices/articleDetailsCommentSlice';
+import {
+    articleDetailsCommentsReducer,
+    getArticleComments,
+} from '../model/slices/articleDetailsCommentsSlice';
 import styles from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
@@ -24,7 +30,7 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = () => {
     const { t } = useTranslation('articles');
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
@@ -33,9 +39,12 @@ const ArticleDetailsPage = () => {
 
     useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)));
 
-    const onSendComment = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch]
+    );
 
     const onBackToList = useCallback(() => {
         navigate(RoutePath.articles);
@@ -57,7 +66,10 @@ const ArticleDetailsPage = () => {
                     className={styles.commentTitle}
                 />
                 <AddCommentForm onSendComment={onSendComment} />
-                <CommentList isLoading={commentsIsLoading} comments={comments} />
+                <CommentList
+                    isLoading={commentsIsLoading}
+                    comments={comments}
+                />
             </div>
         </DynamicModuleLoader>
     );

@@ -13,21 +13,11 @@ import {
 } from '../../model/types/article';
 import styles from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../ArticleTextBlock/ArticleTextBlock';
-import { ArticleListItemSkeleton } from './ArticleListItemSkeleton';
 
 interface ArticleListItemProps {
     className?: string;
     article: Article;
     view: ArticleView;
-    isLoading: boolean;
-}
-
-const getSkeletons = (view: ArticleView) => {
-    return new Array(view === ArticleView.SMALL ? 9 : 0)
-        .fill(0)
-        .map((_, index) => (
-            <ArticleListItemSkeleton className={styles.card} key={index} view={view} />
-        ))
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -35,7 +25,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         className,
         article,
         view,
-        isLoading,
     } = props;
     const { t } = useTranslation('articles');
     const navigate = useNavigate();
@@ -53,19 +42,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     );
     const image = <img src={article.img} alt={article.title} className={styles.image} />;
 
-    if (isLoading) {
-        return (
-            <div className={cn(className, styles.ArticleListItem, styles.view)}>
-                {getSkeletons(view)}
-            </div>
-        );
-    }
-
     if (view === ArticleView.BIG) {
         const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
         return (
-            <div className={cn(className, styles.ArticleListItem, styles.view)}>
+            <div className={cn(className, styles.ArticleListItem, styles[view])}>
                 <Card className={styles.card}>
                     <div className={styles.header}>
                         <Avatar src={article.user.avatar} size={30} />
@@ -90,7 +71,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     }
 
     return (
-        <div className={cn(className, styles.ArticleListItem, styles.view)}>
+        <div className={cn(className, styles.ArticleListItem, styles[view])}>
             <Card className={styles.card} onClick={onOpenArticle}>
                 <div className={styles['image-wrapper']}>
                     {image}

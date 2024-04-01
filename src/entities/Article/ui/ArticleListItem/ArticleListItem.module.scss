@@ -1,3 +1,9 @@
+.ArticleListItem {
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+}
+
 .BIG {
     .views {
         margin-left: auto;
@@ -34,7 +40,7 @@
     }
 
     .text-block {
-        max-height: 200px;
+        max-height: 210px;
         overflow-y: hidden;
     }
 }

@@ -1,5 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Article, ArticleBlockType, ArticleType, ArticleView } from 'entities/Article/model/types/article';
+import {
+    Article, ArticleBlockType, ArticleType, ArticleView,
+} from 'entities/Article/model/types/article';
 import { ArticleListItem } from './ArticleListItem';
 
 export default {
@@ -84,33 +86,16 @@ const article: Article = {
     ],
 };
 
-
 const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
-
-export const LoadingSmall = Template.bind({});
-LoadingSmall.args = {
-    isLoading: true,
-    article,
-    view: ArticleView.SMALL,
-};
-
-export const LoadingBig = Template.bind({});
-LoadingBig.args = {
-    isLoading: true,
-    article,
-    view: ArticleView.BIG,
-};
 
 export const NormalSmall = Template.bind({});
 NormalSmall.args = {
-    isLoading: false,
     article,
     view: ArticleView.SMALL,
 };
 
 export const NormalBig = Template.bind({});
 NormalBig.args = {
-    isLoading: false,
     article,
     view: ArticleView.BIG,
 };
