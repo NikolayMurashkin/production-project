@@ -7,10 +7,12 @@ import {
 } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 import {
     getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView,
 } from '../model/selectors/articlesPageSelectors';
 import { fetchArticlesList } from '../model/services/fetchArticlesList';
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -29,25 +31,33 @@ const ArticlesPage = () => {
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
 
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
+
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlesPageActions.initState());
+        dispatch(fetchArticlesList({ page: 1 }));
     });
 
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlesPageActions.setView(view));
     }, [dispatch]);
 
+    if (error) {
+        return <div>{error}</div>;
+    }
+
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={styles.articles}>
+            <Page className={styles.articles} onScrollEnd={onLoadNextPart}>
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList
                     isLoading={isLoading}
                     articles={articles}
                     view={view}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

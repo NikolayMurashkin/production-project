@@ -20,6 +20,7 @@ import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -90,17 +91,17 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <ProfilePageHeader
-                readonly={readonly}
-            />
-            {validateErrors?.length && validateErrors.map((err) => (
-                <Text
-                    theme={TextTheme.ERROR}
-                    text={validateErrorsTranslates[err]}
-                    key={err}
+            <Page className={className}>
+                <ProfilePageHeader
+                    readonly={readonly}
                 />
-            ))}
-            <div className={className}>
+                {validateErrors?.length && validateErrors.map((err) => (
+                    <Text
+                        theme={TextTheme.ERROR}
+                        text={validateErrorsTranslates[err]}
+                        key={err}
+                    />
+                ))}
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}
@@ -115,7 +116,7 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
                     onChangeUsername={onChangeUsername}
                     onChangeAvatar={onChangeAvatar}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 });

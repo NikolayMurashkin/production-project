@@ -14,6 +14,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Button } from 'shared/ui';
 import { ButtonTheme } from 'shared/ui/Button/Button';
+import { Page } from 'shared/ui/Page/Page';
 import { Text } from 'shared/ui/Text/Text';
 import { getArticleCommentsIsLoading } from '../model/selectros/comments/comments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
@@ -43,7 +44,7 @@ const ArticleDetailsPage = () => {
         (text: string) => {
             dispatch(addCommentForArticle(text));
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onBackToList = useCallback(() => {
@@ -56,7 +57,7 @@ const ArticleDetailsPage = () => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={styles.ArticleDetailsPage}>
+            <Page className={styles.ArticleDetailsPage}>
                 <Button onClick={onBackToList} theme={ButtonTheme.OUTLINE}>
                     {t('Назад к списку')}
                 </Button>
@@ -70,7 +71,7 @@ const ArticleDetailsPage = () => {
                     isLoading={commentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
