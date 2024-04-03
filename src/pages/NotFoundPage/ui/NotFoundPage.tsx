@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import cn from 'classnames';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import styles from './NotFoundPage.module.scss';
 
 interface NotFoundPageProps {

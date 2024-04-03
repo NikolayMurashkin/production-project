@@ -14,7 +14,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Button } from 'shared/ui';
 import { ButtonTheme } from 'shared/ui/Button/Button';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { Text } from 'shared/ui/Text/Text';
 import { getArticleCommentsIsLoading } from '../model/selectros/comments/comments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
