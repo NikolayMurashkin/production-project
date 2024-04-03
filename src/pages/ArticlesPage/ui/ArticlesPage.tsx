@@ -1,4 +1,4 @@
-import { ArticleList, ArticleView, ArticleViewSelector } from 'entities/Article';
+import { ArticleList } from 'entities/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -16,11 +16,11 @@ import {
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage';
 import { initArticlesPage } from '../model/services/initArticlesPage';
 import {
-    articlesPageActions,
     articlesPageReducer,
     getArticles,
 } from '../model/slices/articlesPageSlice';
 import styles from './ArticlesPage.module.scss';
+import { ArticlesPageFilters } from './ArticlesPageFilters/ArticlesPageFilters';
 
 const reducers: ReducersList = {
     articlesPage: articlesPageReducer,
@@ -41,10 +41,6 @@ const ArticlesPage = () => {
         dispatch(initArticlesPage());
     });
 
-    const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
-
     if (error) {
         return <div>{error}</div>;
     }
@@ -52,11 +48,12 @@ const ArticlesPage = () => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page className={styles.articles} onScrollEnd={onLoadNextPart}>
-                <ArticleViewSelector view={view} onViewClick={onChangeView} />
+                <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     articles={articles}
                     view={view}
+                    className={styles.list}
                 />
             </Page>
         </DynamicModuleLoader>
