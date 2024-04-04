@@ -1,6 +1,7 @@
 import { ArticleList } from 'entities/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -32,13 +33,14 @@ const ArticlesPage = () => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
+    const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     if (error) {
@@ -47,12 +49,15 @@ const ArticlesPage = () => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page className={styles.articles} onScrollEnd={onLoadNextPart}>
+            <Page
+                className={styles.articles}
+                onScrollEnd={onLoadNextPart}
+            >
                 <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
-                    articles={articles}
                     view={view}
+                    articles={articles}
                     className={styles.list}
                 />
             </Page>

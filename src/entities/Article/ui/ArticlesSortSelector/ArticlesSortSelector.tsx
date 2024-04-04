@@ -65,6 +65,7 @@ export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
                 options={orderOptions}
                 onChange={onChangeOrder}
                 value={order}
+                className={styles.order}
             />
 
         </div>
