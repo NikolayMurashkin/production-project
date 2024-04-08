@@ -4,13 +4,14 @@ import styles from './Text.module.scss';
 
 export enum TextTheme {
     PRIMARY = 'primary',
-    ERROR = 'error'
+    INVERTED = 'inverted',
+    ERROR = 'error',
 }
 
 export enum TextAlign {
+    RIGHT = 'right',
     LEFT = 'left',
     CENTER = 'center',
-    RIGHT = 'right'
 }
 
 export enum TextSize {
@@ -36,9 +37,10 @@ export const Text = memo((props: TextProps) => {
         size = TextSize.M,
         className,
     } = props;
+    console.log(theme);
 
     return (
-        <div className={cn(styles[theme], styles[align], styles[size], className)}>
+        <div className={cn(className, styles[theme], styles[align], styles[size])}>
             {title && <p className={styles.title}>{title}</p>}
             {text && <p className={styles.text}>{text}</p>}
         </div>

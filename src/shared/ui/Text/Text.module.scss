@@ -1,3 +1,11 @@
+.title {
+    color: var(--primary-color);
+}
+
+.text {
+    color: var(--secondary-color);
+}
+
 .error {
     .title {
         color: var(--red-light);
@@ -5,6 +13,16 @@
 
     .text {
         color: var(--red-dark);
+    }
+}
+
+.inverted {
+    .title {
+        color: var(--inverted-primary-color);
+    }
+
+    .text {
+        color: var(--inverted-secondary-color);
     }
 }
 
@@ -23,23 +41,19 @@
 .size_m {
     .title {
         font: var(--font-l);
-        color: var(--primary-color);
     }
 
     .text {
         font: var(--font-m);
-        color: var(--secondary-color);
     }
 }
 
 .size_l {
     .title {
         font: var(--font-xl);
-        color: var(--primary-color);
     }
 
     .text {
         font: var(--font-l);
-        color: var(--secondary-color);
     }
 }
