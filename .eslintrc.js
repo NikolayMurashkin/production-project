@@ -54,6 +54,16 @@ module.exports = {
         'no-undef': 'off',
         'linebreak-style': ['error', 'windows'],
         'no-array-index-key': 'off',
+        'comma-dangle': [
+            'error',
+            {
+                arrays: 'always-multiline',
+                objects: 'always-multiline',
+                imports: 'never',
+                exports: 'never',
+                functions: 'never',
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
