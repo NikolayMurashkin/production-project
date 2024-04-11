@@ -15,4 +15,5 @@ export const scrollSaveSlice = createSlice({
     },
 });
 
-export const { actions: scrollSaveActions, reducer: scrollSaveReducer } = scrollSaveSlice;
+export const { actions: scrollSaveActions } = scrollSaveSlice;
+export const { reducer: scrollSaveReducer } = scrollSaveSlice;

@@ -64,6 +64,9 @@ module.exports = {
                 functions: 'never',
             },
         ],
+        'object-curly-newline': 'off',
+        'implicit-arrow-linebreak': 'off',
+        'function-paren-newline': 'off',
     },
     globals: {
         __IS_DEV__: true,
