@@ -25,7 +25,7 @@ interface TextProps {
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
-    className?:string;
+    className?: string;
 }
 
 export const Text = memo((props: TextProps) => {
@@ -37,10 +37,16 @@ export const Text = memo((props: TextProps) => {
         size = TextSize.M,
         className,
     } = props;
-    console.log(theme);
 
     return (
-        <div className={cn(className, styles[theme], styles[align], styles[size])}>
+        <div
+            className={cn(
+                className,
+                styles[theme],
+                styles[align],
+                styles[size]
+            )}
+        >
             {title && <p className={styles.title}>{title}</p>}
             {text && <p className={styles.text}>{text}</p>}
         </div>
