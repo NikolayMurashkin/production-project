@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import { buildBabelLoader } from './loaders/buildBabelLoader';
+// import { buildBabelLoader } from './loaders/buildBabelLoader';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
 
@@ -11,7 +11,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         use: ['@svgr/webpack'],
     };
 
-    const babelLoader = buildBabelLoader(options);
+    // const babelLoader = buildBabelLoader(options);
 
     const cssLoader = buildCssLoader(isDev);
 
@@ -34,7 +34,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     return [
         fileLoader,
         svgLoader,
-        babelLoader,
+        // babelLoader,
         typescriptLoader,
         cssLoader,
     ];

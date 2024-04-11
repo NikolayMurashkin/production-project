@@ -22,5 +22,5 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<st
             console.log(e);
             return rejectWithValue('error');
         }
-    },
+    }
 );

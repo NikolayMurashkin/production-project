@@ -92,10 +92,10 @@ LoadingSmall.args = {
     articles: new Array(9)
         .fill(0)
         .map((_, index) => (
-          { 
-            ...article,
-           id: String(index)
-        }
+            {
+                ...article,
+                id: String(index),
+            }
         )),
     view: ArticleView.SMALL,
 };
@@ -106,10 +106,10 @@ LoadingBig.args = {
     articles: new Array(3)
         .fill(0)
         .map((_, index) => (
-          { 
-            ...article,
-           id: String(index)
-        }
+            {
+                ...article,
+                id: String(index),
+            }
         )),
     view: ArticleView.BIG,
 };
@@ -120,10 +120,10 @@ NormalSmall.args = {
     articles: new Array(9)
         .fill(0)
         .map((_, index) => (
-          { 
-            ...article,
-           id: String(index)
-        }
+            {
+                ...article,
+                id: String(index),
+            }
         )),
     view: ArticleView.SMALL,
 };
@@ -134,10 +134,10 @@ NormalBig.args = {
     articles: new Array(3)
         .fill(0)
         .map((_, index) => (
-          { 
-            ...article,
-           id: String(index)
-        }
+            {
+                ...article,
+                id: String(index),
+            }
         )),
     view: ArticleView.BIG,
 };

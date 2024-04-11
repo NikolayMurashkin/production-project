@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
     DynamicModuleLoader,
-    ReducersList,
+    ReducersList
 } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
@@ -17,11 +17,11 @@ import { getArticleCommentsIsLoading } from '../model/selectros/comments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
 import {
-    getArticleComments,
+    getArticleComments
 } from '../model/slices/articleDetailsCommentsSlice';
 import styles from './ArticleDetailsPage.module.scss';
 import {
-    getArticleRecommendations,
+    getArticleRecommendations
 } from '../model/slices/articleDetailsPageRecommendationSlice';
 import { getArticleRecommendationsIsLoading } from '../model/selectros/recommendations';
 import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations';
@@ -51,7 +51,7 @@ const ArticleDetailsPage = () => {
         (text: string) => {
             dispatch(addCommentForArticle(text));
         },
-        [dispatch],
+        [dispatch]
     );
 
     if (!id) {

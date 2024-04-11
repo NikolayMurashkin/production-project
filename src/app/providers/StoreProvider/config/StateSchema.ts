@@ -3,14 +3,14 @@ import {
     AnyAction,
     CombinedState,
     EnhancedStore, Reducer,
-    ReducersMapObject,
+    ReducersMapObject
 } from '@reduxjs/toolkit';
 import { LoginSchema } from 'features/AuthByUsername';
 import { UserSchema } from 'entities/User';
 import { ProfileSchema } from 'entities/Profile';
 import { ArticleDetailsSchema } from 'entities/Article';
 import {
-    ArticleDetailsPageSchema,
+    ArticleDetailsPageSchema
 } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';

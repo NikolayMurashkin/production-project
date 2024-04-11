@@ -21,7 +21,7 @@ export const articleDetailsSlice = createSlice({
             })
             .addCase(fetchArticleById.fulfilled, (
                 state,
-                action: PayloadAction<Article>,
+                action: PayloadAction<Article>
             ) => {
                 state.isLoading = false;
                 state.data = action.payload;

@@ -33,5 +33,5 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
         } catch (e) {
             return rejectWithValue('error');
         }
-    },
+    }
 );

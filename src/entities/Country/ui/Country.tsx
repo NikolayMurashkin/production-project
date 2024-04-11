@@ -17,7 +17,7 @@ export const CountrySelect = memo((props: CountryProps) => {
 
     const countries = useMemo(
         () => Object.values(Countries).map((country) => ({ value: country, content: country })),
-        [],
+        []
     );
 
     const handleOnChange = useCallback((value: string) => {

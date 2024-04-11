@@ -17,7 +17,7 @@ export const CurrencySelect = memo((props: CurrencyProps) => {
 
     const currencies = useMemo(
         () => Object.values(Currencies).map((currency) => ({ value: currency, content: currency })),
-        [],
+        []
     );
 
     const handleOnChange = useCallback((value: string) => {

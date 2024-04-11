@@ -8,5 +8,5 @@ export {
     StateSchema,
     ReduxStoreWithManager,
     AppDispatch,
-    ThunkConfig,
+    ThunkConfig
 };

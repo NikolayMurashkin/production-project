@@ -3,7 +3,7 @@ import { Countries, CountrySelect } from 'entities/Country';
 import { Currencies, CurrencySelect } from 'entities/Currency';
 import { useTranslation } from 'react-i18next';
 import {
-    Avatar, Input, Loader,
+    Avatar, Input, Loader
 } from 'shared/ui';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Profile } from '../../model/types/profile';

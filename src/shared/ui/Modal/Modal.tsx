@@ -4,7 +4,7 @@ import React, {
     useCallback,
     useEffect,
     useRef,
-    useState,
+    useState
 } from 'react';
 import { Portal } from 'shared/ui/Portal/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';

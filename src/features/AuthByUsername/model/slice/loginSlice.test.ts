@@ -1,7 +1,7 @@
 import {
     loginActions,
     loginByUsername,
-    LoginSchema,
+    LoginSchema
 } from 'features/AuthByUsername';
 import { loginReducer } from './loginSlice';
 

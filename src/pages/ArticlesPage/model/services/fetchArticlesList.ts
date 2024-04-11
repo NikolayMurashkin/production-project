@@ -8,7 +8,7 @@ import {
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageType,
-    getArticlesPageNumber,
+    getArticlesPageNumber
 } from '../selectors/articlesPageSelectors';
 
 interface FetchArticlesListProps {
@@ -54,5 +54,5 @@ export const fetchArticlesList = createAsyncThunk<
             } catch (e) {
                 return rejectWithValue('error');
             }
-        },
+        }
     );

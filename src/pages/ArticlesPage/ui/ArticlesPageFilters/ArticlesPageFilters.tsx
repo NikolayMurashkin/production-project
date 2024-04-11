@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import cn from 'classnames';
 import {
-    ArticlesSortSelector, ArticleView, ArticleViewSelector, ArticleSortField, ArticleTypeTabs,
+    ArticlesSortSelector, ArticleView, ArticleViewSelector, ArticleSortField, ArticleTypeTabs
 } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ import { useDebounce } from 'shared/lib/hooks/useDebounce';
 import { ArticleType } from 'entities/Article/model/types/article';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import {
-    getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType, getArticlesPageView,
+    getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType, getArticlesPageView
 } from '../../model/selectors/articlesPageSelectors';
 import styles from './ArticlesPageFilters.module.scss';
 

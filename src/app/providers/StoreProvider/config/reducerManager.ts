@@ -2,12 +2,12 @@ import {
     AnyAction,
     combineReducers,
     Reducer,
-    ReducersMapObject,
+    ReducersMapObject
 } from '@reduxjs/toolkit';
 import {
     ReducerManager,
     StateSchema,
-    StateSchemaKey,
+    StateSchemaKey
 } from './StateSchema';
 
 export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManager {

@@ -67,6 +67,7 @@ module.exports = {
         'object-curly-newline': 'off',
         'implicit-arrow-linebreak': 'off',
         'function-paren-newline': 'off',
+        'jsx-quotes': 'off',
     },
     globals: {
         __IS_DEV__: true,

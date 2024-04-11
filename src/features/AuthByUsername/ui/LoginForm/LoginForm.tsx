@@ -7,21 +7,21 @@ import { loginByUsername } from 'features/AuthByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
     DynamicModuleLoader,
-    ReducersList,
+    ReducersList
 } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import cn from 'classnames';
 import {
-    getLoginUsername,
+    getLoginUsername
 } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import {
-    getLoginPassword,
+    getLoginPassword
 } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import {
-    getLoginError,
+    getLoginError
 } from '../../model/selectors/getLoginError/getLoginError';
 import {
-    getLoginIsLoading,
+    getLoginIsLoading
 } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './LoginForm.module.scss';

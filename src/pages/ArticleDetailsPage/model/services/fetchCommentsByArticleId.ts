@@ -28,5 +28,5 @@ export const fetchCommentsByArticleId = createAsyncThunk<Comment[], string | und
             console.log(e);
             return rejectWithValue('error');
         }
-    },
+    }
 );
