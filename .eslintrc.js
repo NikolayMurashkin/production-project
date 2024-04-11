@@ -17,7 +17,13 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+    plugins: [
+        'react',
+        '@typescript-eslint',
+        'i18next',
+        'react-hooks',
+        'murashkin-plugin',
+    ],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -55,20 +61,12 @@ module.exports = {
         'no-undef': 'off',
         'linebreak-style': ['error', 'windows'],
         'no-array-index-key': 'off',
-        'comma-dangle': [
-            'error',
-            {
-                arrays: 'always-multiline',
-                objects: 'always-multiline',
-                imports: 'never',
-                exports: 'never',
-                functions: 'never',
-            },
-        ],
+        'comma-dangle': 'off',
         'object-curly-newline': 'off',
         'implicit-arrow-linebreak': 'off',
         'function-paren-newline': 'off',
         'jsx-quotes': 'off',
+        'murashkin-plugin/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

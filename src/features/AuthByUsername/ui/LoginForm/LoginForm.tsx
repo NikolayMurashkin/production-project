@@ -3,26 +3,18 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { loginByUsername } from 'features/AuthByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
     DynamicModuleLoader,
-    ReducersList
+    ReducersList,
 } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import cn from 'classnames';
-import {
-    getLoginUsername
-} from '../../model/selectors/getLoginUsername/getLoginUsername';
-import {
-    getLoginPassword
-} from '../../model/selectors/getLoginPassword/getLoginPassword';
-import {
-    getLoginError
-} from '../../model/selectors/getLoginError/getLoginError';
-import {
-    getLoginIsLoading
-} from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import styles from './LoginForm.module.scss';
 
@@ -35,10 +27,7 @@ const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 
-const LoginForm = memo(({
-    className,
-    onSuccess,
-}: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
@@ -46,28 +35,34 @@ const LoginForm = memo(({
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch]
+    );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch]
+    );
 
     const onLogin = useCallback(async () => {
-        const result = await dispatch(loginByUsername({
-            username,
-            password,
-        }));
+        const result = await dispatch(
+            loginByUsername({
+                username,
+                password,
+            })
+        );
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
     }, [dispatch, username, password, onSuccess]);
 
     return (
-        <DynamicModuleLoader
-            reducers={initialReducers}
-        >
+        <DynamicModuleLoader reducers={initialReducers}>
             <div className={cn(styles.LoginForm, className)}>
                 <Text title={t('Форма авторизации')} />
                 {error && (
@@ -78,14 +73,14 @@ const LoginForm = memo(({
                 )}
                 <Input
                     autofocus
-                    type="text"
+                    type='text'
                     className={styles.input}
                     placeholder={t('Введите логин')}
                     onChange={onChangeUsername}
                     value={username}
                 />
                 <Input
-                    type="text"
+                    type='text'
                     className={styles.input}
                     placeholder={t('Введите пароль')}
                     onChange={onChangePassword}

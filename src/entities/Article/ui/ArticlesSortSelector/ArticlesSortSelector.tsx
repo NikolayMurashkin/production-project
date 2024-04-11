@@ -3,8 +3,8 @@ import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Select } from 'shared/ui';
 import { SelectOption } from 'shared/ui/Select/Select';
-import { ArticleSortField } from 'entities/Article';
 import { SortOrder } from 'shared/types';
+import { ArticleSortField } from '../../model/types/article';
 import styles from './ArticlesSortSelector.module.scss';
 
 interface ArticlesSortSelectorProps {
@@ -16,41 +16,41 @@ interface ArticlesSortSelectorProps {
 }
 
 export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
-    const {
-        className,
-        sort,
-        order,
-        onChangeOrder,
-        onChangeSort,
-    } = props;
+    const { className, sort, order, onChangeOrder, onChangeSort } = props;
 
     const { t } = useTranslation('articles');
 
-    const orderOptions = useMemo<SelectOption<SortOrder>[]>(() => [
-        {
-            content: t('возрастанию'),
-            value: 'asc',
-        },
-        {
-            content: t('убыванию'),
-            value: 'desc',
-        },
-    ], [t]);
+    const orderOptions = useMemo<SelectOption<SortOrder>[]>(
+        () => [
+            {
+                content: t('возрастанию'),
+                value: 'asc',
+            },
+            {
+                content: t('убыванию'),
+                value: 'desc',
+            },
+        ],
+        [t]
+    );
 
-    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(() => [
-        {
-            content: t('Дате создания'),
-            value: ArticleSortField.CREATED,
-        },
-        {
-            content: t('Названию'),
-            value: ArticleSortField.TITLE,
-        },
-        {
-            content: t('Количеству просмотров'),
-            value: ArticleSortField.VIEWS,
-        },
-    ], [t]);
+    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(
+        () => [
+            {
+                content: t('Дате создания'),
+                value: ArticleSortField.CREATED,
+            },
+            {
+                content: t('Названию'),
+                value: ArticleSortField.TITLE,
+            },
+            {
+                content: t('Количеству просмотров'),
+                value: ArticleSortField.VIEWS,
+            },
+        ],
+        [t]
+    );
 
     return (
         <div className={cn(className, styles.ArticlesSortSelector)}>
@@ -67,7 +67,6 @@ export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
                 value={order}
                 className={styles.order}
             />
-
         </div>
     );
 });

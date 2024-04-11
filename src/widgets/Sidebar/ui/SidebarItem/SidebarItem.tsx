@@ -13,10 +13,7 @@ interface SidebarItemProps {
 }
 
 export const SidebarItem = memo((props: SidebarItemProps) => {
-    const {
-        item,
-        collapsed,
-    } = props;
+    const { item, collapsed } = props;
 
     const { t } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
@@ -32,9 +29,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
             className={cn(styles.item, { [styles.collapsed]: collapsed })}
         >
             <item.Icon className={styles.icon} />
-            <span className={styles.link}>
-                {t(item.text)}
-            </span>
+            <span className={styles.link}>{t(item.text)}</span>
         </AppLink>
     );
 });

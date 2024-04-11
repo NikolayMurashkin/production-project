@@ -8,7 +8,7 @@ import {
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageType,
-    getArticlesPageNumber
+    getArticlesPageNumber,
 } from '../selectors/articlesPageSelectors';
 
 interface FetchArticlesListProps {

@@ -7,7 +7,7 @@ import {
     getProfileValidateErrors,
     profileActions,
     ProfileCard,
-    profileReducer
+    profileReducer,
 } from 'entities/Profile';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DymanicModuleLoader/DynamicModuleLoader';
 import { memo, useCallback } from 'react';

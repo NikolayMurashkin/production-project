@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { memo } from 'react';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { Loader } from '../../shared/ui/Loader/Loader';
 import styles from './PageLoader.module.scss';
 
 interface PageLoaderProps {

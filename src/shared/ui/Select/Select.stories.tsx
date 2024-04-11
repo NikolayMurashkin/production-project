@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Select } from 'shared/ui/Select/Select';
+import { Select } from '../../ui/Select/Select';
 
 export default {
     title: 'shared/Select',
@@ -26,7 +26,9 @@ Primary.args = {
     ],
     value: '123',
     // eslint-disable-next-line no-alert
-    onChange: (value: string) => { alert(value); },
+    onChange: (value: string) => {
+        alert(value);
+    },
     readonly: false,
 };
 
@@ -45,6 +47,8 @@ Disabled.args = {
     ],
     value: '123',
     // eslint-disable-next-line no-alert
-    onChange: (value: string) => { alert(value); },
+    onChange: (value: string) => {
+        alert(value);
+    },
     readonly: true,
 };
