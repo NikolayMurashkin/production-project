@@ -1,6 +1,6 @@
 import { t } from 'i18next';
 import { memo, useCallback, useMemo } from 'react';
-import { Select } from 'shared/ui';
+import { ListBox } from 'shared/ui';
 import { Currencies } from '../model/types/currency';
 
 interface CurrencyProps {
@@ -11,27 +11,45 @@ interface CurrencyProps {
 }
 
 export const CurrencySelect = memo((props: CurrencyProps) => {
-    const {
-        readonly, value, className, onChange,
-    } = props;
+    const { readonly, value, className, onChange } = props;
 
     const currencies = useMemo(
-        () => Object.values(Currencies).map((currency) => ({ value: currency, content: currency })),
+        () =>
+            Object.values(Currencies).map((currency) => ({
+                value: currency,
+                content: currency,
+            })),
         []
     );
 
-    const handleOnChange = useCallback((value: string) => {
-        onChange?.(value as Currencies);
-    }, [onChange]);
+    const handleOnChange = useCallback(
+        (value: string) => {
+            onChange?.(value as Currencies);
+        },
+        [onChange]
+    );
 
     return (
-        <Select
-            label={t('Валюта')}
-            options={currencies}
-            readonly={readonly}
+        <ListBox
             onChange={handleOnChange}
+            items={currencies}
+            label={t('Валюта')}
+            defaultValue={t('Укажите валюту')}
             value={value}
             className={className}
+            readonly={readonly}
+            direction='top'
         />
     );
+
+    // return (
+    //     <Select
+    //         label={t('Валюта')}
+    //         options={currencies}
+    //         readonly={readonly}
+    //         onChange={handleOnChange}
+    //         value={value}
+    //         className={className}
+    //     />
+    // );
 });

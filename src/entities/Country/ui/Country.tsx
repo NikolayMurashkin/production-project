@@ -1,6 +1,6 @@
 import { t } from 'i18next';
 import { memo, useCallback, useMemo } from 'react';
-import { Select } from 'shared/ui';
+import { ListBox } from 'shared/ui';
 import { Countries } from '../model/types/country';
 
 interface CountryProps {
@@ -11,27 +11,45 @@ interface CountryProps {
 }
 
 export const CountrySelect = memo((props: CountryProps) => {
-    const {
-        readonly, value, className, onChange,
-    } = props;
+    const { readonly, value, className, onChange } = props;
 
     const countries = useMemo(
-        () => Object.values(Countries).map((country) => ({ value: country, content: country })),
+        () =>
+            Object.values(Countries).map((country) => ({
+                value: country,
+                content: country,
+            })),
         []
     );
 
-    const handleOnChange = useCallback((value: string) => {
-        onChange?.(value as Countries);
-    }, [onChange]);
+    const handleOnChange = useCallback(
+        (value: string) => {
+            onChange?.(value as Countries);
+        },
+        [onChange]
+    );
 
     return (
-        <Select
-            label={t('Страна')}
-            options={countries}
-            readonly={readonly}
+        <ListBox
             onChange={handleOnChange}
+            items={countries}
+            label={t('Страна')}
+            defaultValue={t('Укажите страну')}
             value={value}
             className={className}
+            readonly={readonly}
+            direction='top'
         />
     );
+
+    // return (
+    //     <Select
+    //         label={t('Страна')}
+    //         options={countries}
+    //         readonly={readonly}
+    //         onChange={handleOnChange}
+    //         value={value}
+    //         className={className}
+    //     />
+    // );
 });
