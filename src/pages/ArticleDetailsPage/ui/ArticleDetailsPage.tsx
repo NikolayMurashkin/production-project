@@ -13,16 +13,13 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
 import { Text, TextSize } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui';
 import { getArticleCommentsIsLoading } from '../model/selectros/comments';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
-import {
-    getArticleComments,
-} from '../model/slices/articleDetailsCommentsSlice';
+import { getArticleComments } from '../model/slices/articleDetailsCommentsSlice';
 import styles from './ArticleDetailsPage.module.scss';
-import {
-    getArticleRecommendations,
-} from '../model/slices/articleDetailsPageRecommendationSlice';
+import { getArticleRecommendations } from '../model/slices/articleDetailsPageRecommendationSlice';
 import { getArticleRecommendationsIsLoading } from '../model/selectros/recommendations';
 import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from '../model/slices';
@@ -40,7 +37,9 @@ const ArticleDetailsPage = () => {
     const comments = useSelector(getArticleComments.selectAll);
     const recommendations = useSelector(getArticleRecommendations.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
+    const recommendationsIsLoading = useSelector(
+        getArticleRecommendationsIsLoading
+    );
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -61,29 +60,31 @@ const ArticleDetailsPage = () => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page className={styles.ArticleDetailsPage}>
-                <ArticleDetailsPageHeader />
-                <ArticleDetails id={id} />
-                <Text
-                    size={TextSize.L}
-                    title={t('Рекоммендуем')}
-                    className={styles.commentTitle}
-                />
-                <ArticleList
-                    articles={recommendations}
-                    isLoading={recommendationsIsLoading}
-                    className={styles.recommendations}
-                    target="_blank"
-                />
-                <Text
-                    size={TextSize.L}
-                    title={t('Комментарии')}
-                    className={styles.commentTitle}
-                />
-                <AddCommentForm onSendComment={onSendComment} />
-                <CommentList
-                    isLoading={commentsIsLoading}
-                    comments={comments}
-                />
+                <VStack gap='16' max>
+                    <ArticleDetailsPageHeader />
+                    <ArticleDetails id={id} />
+                    <Text
+                        size={TextSize.L}
+                        title={t('Рекоммендуем')}
+                        className={styles.commentTitle}
+                    />
+                    <ArticleList
+                        articles={recommendations}
+                        isLoading={recommendationsIsLoading}
+                        className={styles.recommendations}
+                        target='_blank'
+                    />
+                    <Text
+                        size={TextSize.L}
+                        title={t('Комментарии')}
+                        className={styles.commentTitle}
+                    />
+                    <AddCommentForm onSendComment={onSendComment} />
+                    <CommentList
+                        isLoading={commentsIsLoading}
+                        comments={comments}
+                    />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

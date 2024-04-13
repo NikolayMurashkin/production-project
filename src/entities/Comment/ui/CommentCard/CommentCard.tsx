@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import cn from 'classnames';
 import { Text } from 'shared/ui/Text/Text';
-import { AppLink, Avatar, Skeleton } from 'shared/ui';
+import { AppLink, Avatar, HStack, Skeleton } from 'shared/ui';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Comment } from '../../model/types/comment';
 import styles from './CommentCard.module.scss';
@@ -38,7 +38,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
     }
 
     return (
-        <div className={cn(className, styles.CommentCard)}>
+        <HStack max gap='8' className={cn(className, styles.CommentCard)}>
             <AppLink
                 to={`${RoutePath.profile}${comment?.user.id}`}
                 className={styles.header}
@@ -49,7 +49,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                     className={styles.username}
                 />
             </AppLink>
-            <Text text={comment?.text} className={styles.text} />
-        </div>
+            <Text text={comment?.text} />
+        </HStack>
     );
 });

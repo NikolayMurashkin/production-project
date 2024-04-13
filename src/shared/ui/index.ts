@@ -11,3 +11,5 @@ export { Text } from './Text/Text';
 export { Select } from './Select/Select';
 export { Skeleton } from './Skeleton/Skeleton';
 export { Tabs } from './Tabs/Tabs';
+export { VStack } from './Stack/VStack/VStack';
+export { HStack } from './Stack/HStack/HStack';

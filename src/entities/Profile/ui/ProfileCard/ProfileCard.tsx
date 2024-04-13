@@ -2,9 +2,7 @@ import cn from 'classnames';
 import { Countries, CountrySelect } from 'entities/Country';
 import { Currencies, CurrencySelect } from 'entities/Currency';
 import { useTranslation } from 'react-i18next';
-import {
-    Avatar, Input, Loader,
-} from 'shared/ui';
+import { Avatar, HStack, Input, Loader, VStack } from 'shared/ui';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Profile } from '../../model/types/profile';
 import styles from './ProfileCard.module.scss';
@@ -45,37 +43,44 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={cn(styles.profileCard, styles.loading, classname)}>
+            <HStack
+                justify='center'
+                max
+                className={cn(styles.profileCard, styles.loading, classname)}
+            >
                 <Loader />
-            </div>
+            </HStack>
         );
     }
 
     if (error) {
         return (
-            <div className={cn(styles.profileCard, styles.error, classname)}>
+            <HStack justify='center' max>
                 <Text
+                    className={cn(styles.profileCard, styles.error, classname)}
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке пользователя')}
                     text={t('Попробуйте обновить страницу')}
                     align={TextAlign.CENTER}
                 />
-            </div>
+            </HStack>
         );
     }
 
     return (
-        <div className={cn(styles.profileCard, styles.content, classname, {
-            [styles.editing]: !readonly,
-        })}
+        <VStack
+            gap='8'
+            max
+            className={cn(styles.profileCard, classname, {
+                [styles.editing]: !readonly,
+            })}
         >
-            <div className={styles.avatarWrapper}>
+            <HStack justify='center' max className={styles.avatarWrapper}>
                 <Avatar src={data?.avatar} alt={t('avatar')} />
-            </div>
+            </HStack>
             <Input
                 value={data?.first}
                 placeholder={t('Имя')}
-                className={styles.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
                 autofocus={!readonly}
@@ -83,36 +88,31 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <Input
                 value={data?.lastname}
                 placeholder={t('Фамилия')}
-                className={styles.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
             />
             <Input
                 value={data?.age}
                 placeholder={t('Возраст')}
-                className={styles.input}
                 onChange={onChangeAge}
                 readonly={readonly}
-                type="number"
+                type='number'
             />
             <Input
                 value={data?.city}
                 placeholder={t('Город')}
-                className={styles.input}
                 onChange={onChangeCity}
                 readonly={readonly}
             />
             <Input
                 value={data?.username}
                 placeholder={t('Логин')}
-                className={styles.input}
                 onChange={onChangeUsername}
                 readonly={readonly}
             />
             <Input
                 value={data?.avatar}
                 placeholder={t('Аватар')}
-                className={styles.input}
                 onChange={onChangeAvatar}
                 readonly={readonly}
             />
@@ -120,14 +120,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 readonly={readonly}
                 onChange={onChangeCurrency}
                 value={data?.currency}
-                className={styles.input}
             />
             <CountrySelect
                 readonly={readonly}
                 onChange={onChangeCountry}
                 value={data?.country}
-                className={styles.input}
             />
-        </div>
+        </VStack>
     );
 };

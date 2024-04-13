@@ -1,5 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Article, ArticleBlockType, ArticleType, ArticleView } from '../../model/types/article';
+import {
+    Article,
+    ArticleBlockType,
+    ArticleType,
+    ArticleView,
+} from '../../model/types/article';
 import { ArticleList } from './ArticleList';
 
 export default {
@@ -8,7 +13,6 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-
 } as ComponentMeta<typeof ArticleList>;
 
 const article: Article = {
@@ -85,59 +89,45 @@ const article: Article = {
     ],
 };
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+);
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
     isLoading: true,
-    articles: new Array(9)
-        .fill(0)
-        .map((_, index) => (
-            {
-                ...article,
-                id: String(index),
-            }
-        )),
+    articles: new Array(9).fill(0).map((_, index) => ({
+        ...article,
+        id: String(index),
+    })),
     view: ArticleView.SMALL,
 };
 
 export const LoadingBig = Template.bind({});
 LoadingBig.args = {
     isLoading: true,
-    articles: new Array(3)
-        .fill(0)
-        .map((_, index) => (
-            {
-                ...article,
-                id: String(index),
-            }
-        )),
+    articles: new Array(3).fill(0).map((_, index) => ({
+        ...article,
+        id: String(index),
+    })),
     view: ArticleView.BIG,
 };
 
 export const NormalSmall = Template.bind({});
 NormalSmall.args = {
     isLoading: false,
-    articles: new Array(9)
-        .fill(0)
-        .map((_, index) => (
-            {
-                ...article,
-                id: String(index),
-            }
-        )),
+    articles: new Array(9).fill(0).map((_, index) => ({
+        ...article,
+        id: String(index),
+    })),
     view: ArticleView.SMALL,
 };
 
 export const NormalBig = Template.bind({});
 NormalBig.args = {
     isLoading: false,
-    articles: new Array(3)
-        .fill(0)
-        .map((_, index) => (
-            {
-                ...article,
-                id: String(index),
-            }
-        )),
+    articles: new Array(3).fill(0).map((_, index) => ({
+        ...article,
+        id: String(index),
+    })),
     view: ArticleView.BIG,
 };
