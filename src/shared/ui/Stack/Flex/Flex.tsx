@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import cn from 'classnames';
 import styles from './Flex.module.scss';
 
@@ -14,8 +14,12 @@ export type FlexGap = '4' | '8' | '16' | '32';
 //     end: styles['justify-end'],
 //     between: styles['justify-between'],
 // };
+type DivProps = DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+>;
 
-export interface FlexProps {
+export interface FlexProps extends DivProps {
     className?: string;
     children: ReactNode;
     justify?: FlexJustify;

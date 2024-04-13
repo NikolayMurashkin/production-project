@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-    ThemeDecorator,
-} from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { Text, TextSize, TextTheme } from './Text';
 
@@ -63,4 +61,18 @@ SizeL.args = {
     title: 'Some great Title',
     text: 'Some awesome text',
     size: TextSize.L,
+};
+
+export const SizeS = Template.bind({});
+SizeS.args = {
+    title: 'Some great Title',
+    text: 'Some awesome text',
+    size: TextSize.S,
+};
+
+export const SizeM = Template.bind({});
+SizeM.args = {
+    title: 'Some great Title',
+    text: 'Some awesome text',
+    size: TextSize.M,
 };
