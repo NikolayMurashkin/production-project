@@ -8,19 +8,63 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [
+        (Story) => (
+            <div style={{ padding: 200 }}>
+                <Story />
+            </div>
+        ),
+    ],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => (
     <ListBox {...args} />
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const BottomLeft = Template.bind({});
+BottomLeft.args = {
     items: [
-        { value: '123', content: 'asdasd' },
-        { value: '1234', content: 'asdasd' },
-        { value: '1234', content: 'asdasd', disabled: true },
+        { value: '123', content: 'qweqweqwe qweqwe' },
+        { value: '1234', content: 'asdasd asdasd' },
+        { value: '1234', content: 'asasdasddasd', disabled: true },
     ],
     onChange: action('listBox'),
-    defaultValue: 'Выберите значение',
+    value: 'value',
+    direction: 'bottom-left',
+};
+
+export const BottomRight = Template.bind({});
+BottomRight.args = {
+    items: [
+        { value: '123', content: 'qweqweqwe qweqwe' },
+        { value: '1234', content: 'asdasd asdasd' },
+        { value: '1234', content: 'asasdasddasd', disabled: true },
+    ],
+    onChange: action('listBox'),
+    value: 'value',
+    direction: 'bottom-right',
+};
+
+export const TopLeft = Template.bind({});
+TopLeft.args = {
+    items: [
+        { value: '123', content: 'qweqweqwe qweqwe' },
+        { value: '1234', content: 'asdasd asdasd' },
+        { value: '1234', content: 'asasdasddasd', disabled: true },
+    ],
+    onChange: action('listBox'),
+    value: 'value',
+    direction: 'top-left',
+};
+
+export const TopRight = Template.bind({});
+TopRight.args = {
+    items: [
+        { value: '123', content: 'qweqweqwe qweqwe' },
+        { value: '1234', content: 'asdasd asdasd' },
+        { value: '1234', content: 'asasdasddasd', disabled: true },
+    ],
+    onChange: action('listBox'),
+    value: 'value',
+    direction: 'top-right',
 };

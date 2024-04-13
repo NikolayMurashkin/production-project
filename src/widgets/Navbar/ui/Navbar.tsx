@@ -5,7 +5,7 @@ import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import cn from 'classnames';
-import { AppLink, Text } from 'shared/ui';
+import { AppLink, Avatar, Dropdown, Text } from 'shared/ui';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { TextTheme } from 'shared/ui/Text/Text';
@@ -48,13 +48,21 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 >
                     {t('Создать статью')}
                 </AppLink>
-                <Button
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                    className={styles.links}
-                    onClick={onLogout}
-                >
-                    {t('Выйти')}
-                </Button>
+                <Dropdown
+                    items={[
+                        {
+                            content: t('Профиль'),
+                            href: RoutePath.profile + authData.id,
+                        },
+                        {
+                            content: t('Выйти'),
+                            onClick: onLogout,
+                        },
+                    ]}
+                    trigger={<Avatar size={30} src={authData.avatar} />}
+                    className={styles.dropdown}
+                    direction='bottom-left'
+                />
             </header>
         );
     }
@@ -68,10 +76,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 {t('Войти')}
             </Button>
             {isAuthModal && (
-                <LoginModal
-                    isOpen={isAuthModal}
-                    onClose={onCloseModal}
-                />
+                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
             )}
         </header>
     );
