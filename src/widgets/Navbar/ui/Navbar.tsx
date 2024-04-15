@@ -3,7 +3,12 @@ import { memo, useCallback, useState } from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User';
+import {
+    getUserAuthData,
+    isUserAdmin,
+    isUserManager,
+    userActions,
+} from 'entities/User';
 import cn from 'classnames';
 import { AppLink, Avatar, Dropdown, Text } from 'shared/ui';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -18,6 +23,8 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
 
     const dispatch = useDispatch();
 
@@ -34,6 +41,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     }, [dispatch]);
 
     const authData = useSelector(getUserAuthData);
+    const isAdminPanelAvailable = isAdmin || isManager;
+
     if (authData) {
         return (
             <header className={cn(styles.Navbar, className)}>
@@ -50,6 +59,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 </AppLink>
                 <Dropdown
                     items={[
+                        ...(isAdminPanelAvailable
+                            ? [
+                                  {
+                                      content: t('Админка'),
+                                      href: RoutePath.admin_panel,
+                                  },
+                              ]
+                            : []),
                         {
                             content: t('Профиль'),
                             href: RoutePath.profile + authData.id,
