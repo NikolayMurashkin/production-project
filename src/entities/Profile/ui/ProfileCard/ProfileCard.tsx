@@ -84,12 +84,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 onChange={onChangeFirstname}
                 readonly={readonly}
                 autofocus={!readonly}
+                data-testid='ProfileCard.firstname'
             />
             <Input
                 value={data?.lastname}
                 placeholder={t('Фамилия')}
                 onChange={onChangeLastname}
                 readonly={readonly}
+                data-testid='ProfileCard.lastname'
             />
             <Input
                 value={data?.age}
@@ -97,24 +99,28 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 onChange={onChangeAge}
                 readonly={readonly}
                 type='number'
+                data-testid='ProfileCard.age'
             />
             <Input
                 value={data?.city}
                 placeholder={t('Город')}
                 onChange={onChangeCity}
                 readonly={readonly}
+                data-testid='ProfileCard.city'
             />
             <Input
                 value={data?.username}
                 placeholder={t('Логин')}
                 onChange={onChangeUsername}
                 readonly={readonly}
+                data-testid='ProfileCard.username'
             />
             <Input
                 value={data?.avatar}
                 placeholder={t('Аватар')}
                 onChange={onChangeAvatar}
                 readonly={readonly}
+                data-testid='ProfileCard.avatar'
             />
             <CurrencySelect
                 readonly={readonly}

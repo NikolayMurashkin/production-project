@@ -1,3 +1,4 @@
+/* i18next-extract-disable-next-line */
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
