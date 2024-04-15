@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { ForbiddenPage } from './ForbiddenPage';
+import ForbiddenPage from './ForbiddenPage';
 
 export default {
     title: 'pages/ForbiddenPage',

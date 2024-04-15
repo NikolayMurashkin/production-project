@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { AdminPanelPage } from './AdminPanelPage';
+import AdminPanelPage from './AdminPanelPage';
 
 export default {
     title: 'pages/AdminPanelPage',

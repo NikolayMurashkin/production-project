@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import cn from 'classnames';
 import { Text } from 'shared/ui/Text/Text';
-import { AppLink, Avatar, HStack, Skeleton } from 'shared/ui';
+import { AppLink, Avatar, HStack, Skeleton, VStack } from 'shared/ui';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Comment } from '../../model/types/comment';
 import styles from './CommentCard.module.scss';
@@ -17,7 +17,8 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
     if (isLoading) {
         return (
-            <div
+            <VStack
+                gap='8'
                 className={cn(className, styles.CommentCard, styles.isLoading)}
             >
                 <div className={styles.header}>
@@ -29,7 +30,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                     />
                 </div>
                 <Skeleton height={50} width='100%' className={styles.text} />
-            </div>
+            </VStack>
         );
     }
 
