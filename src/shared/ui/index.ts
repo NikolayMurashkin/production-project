@@ -7,7 +7,7 @@ export { Loader } from './Loader/Loader';
 export { Modal } from './Modal/Modal';
 export { PageLoader } from '../../widgets/PageLoader/PageLoader';
 export { Portal } from './Portal/Portal';
-export { Text } from './Text/Text';
+export { Text, TextSize, TextAlign, TextTheme } from './Text/Text';
 export { Select } from './Select/Select';
 export { Skeleton } from './Skeleton/Skeleton';
 export { Tabs } from './Tabs/Tabs';
