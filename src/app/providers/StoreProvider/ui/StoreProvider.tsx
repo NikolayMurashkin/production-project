@@ -11,11 +11,7 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider = (props: StoreProviderProps) => {
-    const {
-        children,
-        initialState,
-        asyncReducers,
-    } = props;
+    const { children, initialState, asyncReducers } = props;
 
     const store = createReduxStore(
         initialState as StateSchema,
@@ -23,6 +19,7 @@ export const StoreProvider = (props: StoreProviderProps) => {
     );
 
     return (
+        // @ts-ignore
         <Provider store={store}>{children}</Provider>
     );
 };

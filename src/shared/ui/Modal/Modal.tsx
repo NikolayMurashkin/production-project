@@ -81,6 +81,7 @@ export const Modal = (props: ModalProps) => {
     }
 
     return (
+        // @ts-ignore
         <Portal>
             <div
                 className={cn(
