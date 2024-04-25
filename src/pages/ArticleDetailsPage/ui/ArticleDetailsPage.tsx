@@ -1,6 +1,5 @@
 import { ArticleDetails } from 'entities/Article';
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import {
     DynamicModuleLoader,
@@ -19,7 +18,6 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage = () => {
-    const { t } = useTranslation('articles');
     const { id } = useParams<{ id: string }>();
 
     return (
